@@ -1,0 +1,26 @@
+Command: my-tweet, Search: undefined
+Command: spotify-this-song, Search: undefined
+Command: do-what-it-says, Search: undefined
+Command: movie-this, Search: up
+Command: my-tweet, Search: undefined
+Command: my-tweet, Search: undefined
+Command: my-tweet, Search: undefined
+Command: my-tweets, Search: undefined
+Command: my-tweet, Search: undefined
+Command: my-tweets, Search: billie jean king
+Command: my-tweet, Search: undefined
+Command: my-tweets, Search: tennis
+Command: my-tweet, Search: undefined
+Command: my-tweets, Search: yellow fuzzy balls
+Command: my-tweets, Search: basketball
+Command: my-tweets, Search: michael jordan
+Command: spotify-this-song, Search: undefined
+Command: spotify-this-song, Search: krull
+Command: spotify-this-song, Search: undefined
+Command: spotify-this-song, Search: blade runner
+Command: movie-this, Search: blade runner
+Command: movie-this, Search: up
+Command: do-what-it-says, Search: up, LIRI Command: movie-this
+Command: my-tweets, Search: vehicles
+Command: spotify-this-song, Search: free willy
+Command: movie-this, Search: wonder woman

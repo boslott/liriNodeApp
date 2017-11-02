@@ -2,6 +2,7 @@
 function Tweety() {
 
   this.keys = require('./keys.js');
+  this.log = require('./log.js');
   this.inquirer = require('inquirer');
   this.colors = require('colors');
   this.request = require('request');
@@ -16,31 +17,49 @@ function Tweety() {
   });
 
 
-  this.myTweets = function(liriApp) {
+  this.myTweets = function(liriApp, search) {
     var liriApp = liriApp;
-    // var twitterSearch = twitterSearch;
+    var search = search;
 
-    this.inquirer.prompt([
-      {
-        type: 'input',
-        message: 'Add Search Person/Topic: '.bold,
-        name: 'twitterSearch'
-      }
-    ]).then((response) => {
-
-      this.client.get('search/tweets', {q: response.twitterSearch}, (error, tweets, response) => {
-        if(error) {
-          console.log(error);
-          console.log('error: ' + error);
-          throw error;
+    if (search === undefined) {
+      this.inquirer.prompt([
+        {
+          type: 'input',
+          message: 'Add Search Person/Topic: '.bold,
+          name: 'twitterSearch'
         }
-        else {
-          this.printTweets(tweets);
-        }
+      ]).then((response) => {
+        var log = this.log;
+        log.logAction('my-tweets', response.twitterSearch);
+        this.client.get('search/tweets', {q: response.twitterSearch}, (error, tweets, response) => {
+          if(error) {
+            console.log(error);
+            console.log('error: ' + error);
+            throw error;
+          }
+          else {
+            this.printTweets(tweets);
+          }
 
-        liriApp.chooseCommand();
+          liriApp.chooseCommand();
+       });
      });
-   });
+   } else {
+     var log = this.log;
+     log.logAction('my-tweets', search);
+     this.client.get('search/tweets', {q: search}, (error, tweets, response) => {
+       if(error) {
+         console.log(error);
+         console.log('error: ' + error);
+         throw error;
+       }
+       else {
+         this.printTweets(tweets);
+       }
+
+       liriApp.chooseCommand();
+     });
+    }
   };
 
   this.printTweets = function(tweets) {

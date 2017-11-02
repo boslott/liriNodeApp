@@ -2,36 +2,51 @@
 function MovieThis() {
 
   this.keys = require('./keys.js');
+  this.log = require('./log.js');
   this.inquirer = require('inquirer');
   this.colors = require('colors');
   this.request = require('request');
 
 
-  this.movieMe = function(liriApp) {
+  this.movieMe = function(liriApp, search) {
     var liriApp = liriApp
+    var search = search;
     var movie = this;
 
-    liriApp.inquirer.prompt([
-      {
-        type: 'input',
-        message: 'What movie would you like to search?',
-        name: 'movieSearch'
-      }
-    ]).then(function(response){
-      if (response.movieSearch === '' || response.movieSearch === ' ') {
-        movie.request('http://www.omdbapi.com/?apikey=40e9cece&t=mr+nobody', function(error, response, body) {
-          var mov = JSON.parse(body);
-          if(error) throw error;
-          movie.printMovie(mov, liriApp);
-        });
-      } else {
-        movie.request('http://www.omdbapi.com/?apikey=40e9cece&t='+response.movieSearch, function(error, response, body) {
-          var mov = JSON.parse(body);
-          if(error) throw error;
-          movie.printMovie(mov, liriApp);
-        });
-      }
-    });
+    if (search === undefined) {
+      liriApp.inquirer.prompt([
+        {
+          type: 'input',
+          message: 'What movie would you like to search?',
+          name: 'movieSearch'
+        }
+      ]).then(function(response){
+        var log = movie.log;
+        log.logAction('movie-this', response.movieSearch);
+
+        if (response.movieSearch === '' || response.movieSearch === ' ') {
+          movie.request('http://www.omdbapi.com/?apikey=40e9cece&t=mr+nobody', function(error, response, body) {
+            var mov = JSON.parse(body);
+            if(error) throw error;
+            movie.printMovie(mov, liriApp);
+          });
+        } else {
+          movie.request('http://www.omdbapi.com/?apikey=40e9cece&t='+response.movieSearch, function(error, response, body) {
+            var mov = JSON.parse(body);
+            if(error) throw error;
+            movie.printMovie(mov, liriApp);
+          });
+        }
+      });
+    } else {
+      var log = movie.log;
+      log.logAction('movie-this', search);
+      movie.request('http://www.omdbapi.com/?apikey=40e9cece&t=' + search, function(error, response, body) {
+        var mov = JSON.parse(body);
+        if(error) throw error;
+        movie.printMovie(mov, liriApp);
+      });
+    }
   };
 
   this.printMovie = function(mov, liriApp) {
