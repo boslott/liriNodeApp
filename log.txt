@@ -24,3 +24,20 @@ Command: do-what-it-says, Search: up, LIRI Command: movie-this
 Command: my-tweets, Search: vehicles
 Command: spotify-this-song, Search: free willy
 Command: movie-this, Search: wonder woman
+Command: movie-this, Search: death becomes her
+Command: spotify-this-song, Search: can't touch this
+Command: my-tweets, Search: brussel sprouts
+Command: movie-this, Search: up
+Command: do-what-it-says, Search: up, LIRI Command: movie-this
+Command: do-what-it-says, Search: 2018 winter olympics, LIRI Command: 
+my-tweets
+Command: do-what-it-says, Search: 2018 winter olympics, LIRI Command: 
+my-tweets
+Command: my-tweets, Search: 2018 winter olympics
+Command: do-what-it-says, Search: 2018 winter olympics, LIRI Command: my-tweets
+Command: my-tweets, Search: kdkcic
+Command: my-tweets, Search: positioning
+Command: spotify-this-song, Search: this song
+Command: movie-this, Search: rising sun
+Command: my-tweets, Search: 2018 winter olympics
+Command: do-what-it-says, Search: 2018 winter olympics, LIRI Command: my-tweets
